@@ -1,0 +1,27 @@
+@use "../../../variables" as v;
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    position: fixed;
+    width: 100%;
+    padding: 20px;
+    border-bottom: 1px solid v.$accent-color;
+    color: v.$foreground;
+    z-index: 10;
+
+    ul {
+        display: flex;
+        gap: 20px;
+
+        li {
+            cursor: pointer;
+
+            &:hover {
+                color: v.$accent-color
+            }
+        }
+    }
+}

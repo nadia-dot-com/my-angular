@@ -1,1 +1,47 @@
-/* You can add global styles to this file, and also import other style files */
+@use "./variables" as v;
+
+html {
+    scroll-padding-top: 60px;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100dvh;
+    width: 100dvw;
+}
+
+body {
+    display: flex;
+    overflow-x: hidden;
+    flex-direction: column;
+    background-color: v.$background;
+    color: v.$foreground;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100dvw;
+    padding: 100px 20px;
+}
+
+input {
+    background-color: inherit ;
+    border: 1px solid gray;
+    padding: 4px;
+    border-radius: 4px;
+}
+
+ul {
+    list-style: none;
+    margin: none;
+}
