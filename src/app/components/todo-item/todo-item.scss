@@ -1,0 +1,6 @@
+@use "../../../mixins" as m;
+ 
+ 
+ li {
+     @include m.flex(row, 10px);
+ }

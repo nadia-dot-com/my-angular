@@ -1,6 +1,6 @@
 export type Todo = {
     userId: number;
-    comleted: boolean;
+    completed: boolean;
     title: string;
     id: number;
 }

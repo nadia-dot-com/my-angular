@@ -1,7 +1,13 @@
-ul {
-    li {
-        display: flex;
-        align-items: center;
-        gap: 9px;
+@use "../../mixins" as m;
+
+:host {
+    @include m.flex(column, 20px);
+
+    form {
+        @include m.flex(column, 4px);
+    }
+
+    ul {
+        @include m.flex(column, 9px);
     }
 }
