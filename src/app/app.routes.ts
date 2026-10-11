@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { canAvtivaleLogin } from './services/login/access.guard';
 
 export const routes: Routes = [
     {
@@ -18,6 +19,19 @@ export const routes: Routes = [
         path: "products",
         loadComponent: () => {
             return import("./products/products").then((m) => m.Products)
+        }
+    },
+    {
+        path: "profiles",
+        loadComponent: () => {
+            return import("./profiles/profiles").then((m) => m.Profiles)
+        },
+        canActivate: [canAvtivaleLogin]
+    },
+    {
+        path: "login",
+        loadComponent: () => {
+            return import("./login/login").then((m) => m.LoginComponent)
         }
     }
 ];

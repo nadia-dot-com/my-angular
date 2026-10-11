@@ -1,3 +1,5 @@
 <app-greeting [message]="homeMessage()"/>
 <app-counter/>
 <input placeholder="Type something..." type="text" (keyup)="keyUpHandler($event)"/>
+<h3>{{ homeTitle }}</h3>
+<input [value]="homeTitle" #inputName (click)="onInputClick()" (keyup) ="handleHomeTitle(inputName.value)"/>

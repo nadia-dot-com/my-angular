@@ -11,17 +11,10 @@ header {
     border-bottom: 1px solid v.$accent-color;
     color: v.$foreground;
     z-index: 10;
+    background-color: v.$background;
 
     ul {
         display: flex;
         gap: 20px;
-
-        li {
-            cursor: pointer;
-
-            &:hover {
-                color: v.$accent-color
-            }
-        }
     }
 }

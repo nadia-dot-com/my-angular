@@ -1,10 +1,12 @@
 <header>
-    <div routerLink="/" >{{ logo() }}</div>
+    <div routerLink="/">{{ logo() }}</div>
     <nav>
         <ul>
-            <li routerLink="/" >Home</li>
-            <li routerLink="/todos">Todos</li>
-            <li routerLink="/products">Products</li>
+            @for(route of routes; track route.label) {
+            <li>
+                <a [routerLink]="route.href">{{ route.label }}</a>
+            </li>
+            }
         </ul>
     </nav>
 </header>

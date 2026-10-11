@@ -1,3 +1,4 @@
+@use "./fonts";
 @use "./variables" as v;
 
 html {
@@ -8,8 +9,6 @@ html,
 body {
     margin: 0;
     padding: 0;
-    height: 100dvh;
-    width: 100dvw;
 }
 
 body {
@@ -18,6 +17,14 @@ body {
     flex-direction: column;
     background-color: v.$background;
     color: v.$foreground;
+    font-family: 'JetBrains Mono';
+    font-weight: 500;
+        width: 100dvw;
+    height: 100dvh;
+    background-image: url('/assets/images/bg.png');
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: cover;
 }
 
 * {
@@ -35,14 +42,47 @@ main {
 }
 
 input {
-    background-color: inherit ;
-    border: 1px solid gray;
-    padding: 4px;
+    background-color: inherit;
+    border: 1px solid white;
+    padding: 12px 20px;
     border-radius: 4px;
     color: white;
+    background-color: black;
+
+    &::placeholder{
+        color: white;
+        font-size: 200;
+    }
 }
 
 ul {
     list-style: none;
     margin: none;
+}
+
+a {
+    color: v.$foreground;
+    text-decoration: none;
+    transition: color 0.2s ease;
+    cursor: pointer;
+    &:hover, &:active {
+        color: v.$accent-color
+    }
+}
+
+button {
+    background-color: v.$accent-light-color;
+    padding: 10px 20px;
+    color: v.$background;
+    font-size: 14px;
+    font-family: inherit;
+    border: none;
+    color: black;
+    font-weight: 500;
+}
+
+h6 {
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 800;
 }

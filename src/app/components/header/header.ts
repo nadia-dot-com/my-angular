@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { TodosService } from '../../services/todos';
+import { ROUTE_LABELS } from '../../config/routerLabels';
 
 @Component({
   imports: [RouterLink],
@@ -9,5 +9,6 @@ import { TodosService } from '../../services/todos';
   templateUrl: './header.html',
 })
 export class Header {
-  logo = signal("My Logo")
+  logo = signal("My Logo");
+  routes = ROUTE_LABELS;
 }

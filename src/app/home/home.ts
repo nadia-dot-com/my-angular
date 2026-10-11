@@ -10,8 +10,14 @@ import { Counter } from '../components/counter/counter';
 })
 export class Home {
   homeMessage = signal("Message from Home");
-
+  homeTitle = "Home Page";
   keyUpHandler(event: KeyboardEvent) {
     console.log(`user pressed the ${event.key} key`);
+  };
+  onInputClick() {
+    console.log("Input onClick")
+  }
+  handleHomeTitle(newTitle: string) {
+    this.homeTitle = newTitle;
   }
 }

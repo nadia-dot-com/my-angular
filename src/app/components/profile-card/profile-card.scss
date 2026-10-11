@@ -1,0 +1,55 @@
+@use "../../../variables" as v;
+
+.profile-card {
+    border: 1px solid v.$foreground;
+    padding: 24px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 32px;
+    align-items: center;
+
+    .avatar-name {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+
+        .avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            font-weight: 400;
+        }
+    }
+
+    .profile-tags {
+        display: flex;
+        gap: 10px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow-x: auto;
+
+        &::-webkit-scrollbar {
+            color: transparent;
+        }
+
+        .skill-tag {
+            border: 1px solid v.$foreground;
+            border-radius: 2px;
+            padding: 4px 8px;
+            display: inline;
+            font-weight: 700;
+        }
+    }
+
+    .description {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        line-clamp: 3;
+    }
+
+}

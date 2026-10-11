@@ -1,0 +1,40 @@
+.loginContent {
+    width: 100dvh;
+    height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+
+    .content {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        form {
+            display: flex;
+            flex-direction: column;
+            max-width: 400px;
+            width: 100%;
+            gap: 20px;
+
+            .title {
+                margin-bottom: 60px;
+                font-size: 48px;
+            }
+
+            .field {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+
+            }
+
+            button {
+                margin-top: 32px;
+            }
+        }
+    }
+}
