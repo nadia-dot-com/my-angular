@@ -33,5 +33,23 @@ export const routes: Routes = [
         loadComponent: () => {
             return import("./login/login").then((m) => m.LoginComponent)
         }
+    },
+    {
+        path: "my-profile",
+        loadComponent: () => {
+            return import("./my-profile/my-profile").then((m) => m.MyProfile)
+        }
+    },
+     {
+        path: "chats",
+        loadComponent: () => {
+            return import("./chats/chats").then((m) => m.Chats)
+        }
+    },
+     {
+        path: "search",
+        loadComponent: () => {
+            return import("./search/search").then((m) => m.Search)
+        }
     }
 ];

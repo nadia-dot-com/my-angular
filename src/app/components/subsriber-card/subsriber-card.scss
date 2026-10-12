@@ -1,0 +1,14 @@
+.subsriber-card {
+    display: grid;
+    grid-template-columns: 32px 1fr;
+    grid-gap: 12px;
+    padding: 8px;
+    align-items: center;
+    cursor: pointer;
+
+    .subsriber-avatar {
+        height: 32px;
+        width: 32px;
+        border-radius: 50%;
+    }
+}

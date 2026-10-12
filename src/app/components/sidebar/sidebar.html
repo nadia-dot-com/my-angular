@@ -1,0 +1,36 @@
+<header>
+    <img src="/assets/images/smallLogo.png" alt="Logo">
+    <nav>
+        <ul>
+            @for(route of routes; track route.label) {
+            <li>
+                <a [routerLink]="route.href" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                    @if(route.svg) {
+                    <svg class="svg" [icon]="route.svg"></svg>
+                    }
+                    {{ route.label }}
+                </a>
+            </li>
+            }
+        </ul>
+    </nav>
+
+    <div class="subscribersTitle">Subscribers</div>
+
+    @for(subscriber of subscribers$ | async; track subscriber.id) {
+    <app-subsriber-card [subscriber]="subscriber"></app-subsriber-card>
+    }
+
+    <a [routerLink]="['/login']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">All subsribers
+        <span class="view">&gt;</span></a>
+</header>
+
+<footer class="sidebarFooter">
+    @if(me(); as me) {
+    <a class="myProfile" [routerLink]="['/login']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+        <img [src]="me.avatarUrl | imgUrl" alt="My Avatar">
+        <p>{{ me.username }}</p>
+        <svg class="svg" icon="settings" alt="Settings"></svg>
+    </a>
+    }
+</footer>

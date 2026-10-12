@@ -1,0 +1,126 @@
+@use "../../../variables" as v;
+
+:host {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 100%;
+    padding: 20px 12px;
+    color: v.$foreground;
+    z-index: 10;
+    background-color: #000;
+    gap: 20px;
+    font-size: 14px;
+    justify-content: space-between;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-size: 14px;
+
+
+    ul {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        width: 100%;
+        font-weight: 700;
+
+        li {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            width: 100%;
+
+            a {
+                padding: 16px 8px;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                gap: 12px;
+
+                &.active,
+                &:focus-visible {
+                    background-color: v.$background;
+                    color: v.$accent-color;
+                }
+
+                .svg {
+                    width: 16px;
+                    height: 16px;
+                }
+            }
+        }
+    }
+
+    img {
+        width: 61px;
+        height: 64px;
+    }
+
+    .subscribers {
+        padding: 12px 16px;
+        font-weight: 400;
+    }
+
+    a {
+
+        &.active,
+        &:focus-visible {
+            background-color: v.$background;
+            color: v.$accent-color;
+        }
+
+        .view {
+            position: relative;
+            top: 1.5px;
+            font-size: 18px;
+        }
+    }
+}
+
+.svg {
+    width: 16px;
+    height: 16px;
+}
+
+.sidebarFooter {
+    display: flex;
+    align-items: flex-end;
+    color: v.$foreground;
+    font-size: 14px;
+    width: 100%;
+
+
+    .myProfile {
+        display: grid;
+        grid-template-columns: 32px 1fr 16px;
+        gap: 20px;
+        align-items: center;
+        width: 100%;
+        padding: 8px;
+
+        &.active,
+        &:focus-visible {
+            background-color: v.$background;
+            color: v.$accent-color;
+        }
+
+
+        img {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+        }
+
+        .svg {
+            width: 16px;
+            height: 16px;
+            position: relative;
+            top: 2px;
+        }
+
+    }
+}

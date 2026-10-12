@@ -1,12 +1,15 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { Profile } from '../model/profile.types';
+import { Pageble } from '../model/pagable.types';
+import { map, tap } from 'rxjs';
 
 @Injectable({
     providedIn: "root"
 })
 export class ProfileService {
     http = inject(HttpClient);
+    me = signal<Profile | null>(null);
 
     getProfiles() {
         const url = "http://localhost:8000/yt-course/account/test_accounts";
@@ -14,6 +17,16 @@ export class ProfileService {
     }
 
     getMe() {
-        return this.http.get<Profile>('http://localhost:8000/yt-course/account/me');
+        return this.http.get<Profile>('http://localhost:8000/yt-course/account/me/')
+        .pipe(
+            tap(res => this.me.set(res))
+        )
+    }
+
+    getSubscribers() {
+        return this.http.get<Pageble<Profile>>('http://localhost:8000/yt-course/account/subscribers/')
+        .pipe(
+            map(res => res.items.slice(0, 3))
+        )
     }
 }

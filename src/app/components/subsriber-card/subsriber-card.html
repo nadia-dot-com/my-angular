@@ -1,0 +1,4 @@
+<div class="subsriber-card">
+    <img class="subsriber-avatar" [src]="(subscriber()?.avatarUrl ?? null) | imgUrl" alt="Subsriber Avatar">
+    <strong>{{ subscriber()?.firstName }} {{subscriber()?.lastName}}</strong>
+</div>

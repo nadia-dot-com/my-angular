@@ -1,10 +1,10 @@
 import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Header } from './components/header/header';
+import { Sidebar } from './components/sidebar/sidebar';
 import { ProfileService } from './services/profile';
 
 @Component({
-  imports: [RouterOutlet, Header],
+  imports: [RouterOutlet, Sidebar],
   selector: 'app-root',
   styleUrl: './app.scss',
   templateUrl: './app.html',
