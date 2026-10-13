@@ -35,18 +35,18 @@ export const routes: Routes = [
         }
     },
     {
-        path: "my-profile",
+        path: 'profile/:id',
         loadComponent: () => {
-            return import("./my-profile/my-profile").then((m) => m.MyProfile)
+            return import("./profile/profile").then((m) => m.ProfileComponent)
         }
     },
-     {
+    {
         path: "chats",
         loadComponent: () => {
             return import("./chats/chats").then((m) => m.Chats)
         }
     },
-     {
+    {
         path: "search",
         loadComponent: () => {
             return import("./search/search").then((m) => m.Search)

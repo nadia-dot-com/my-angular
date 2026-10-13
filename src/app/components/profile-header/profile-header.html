@@ -1,1 +1,7 @@
-<p>profile-header works!</p>
+@if(profile(); as profile) {
+       <img [src]="profile.avatarUrl | imgUrl" alt="Avatar">
+       <div>
+           <h4>{{ profile.firstName }} {{ profile.lastName }}</h4>
+           <p>{{ profile.username }}</p>
+       </div>
+}

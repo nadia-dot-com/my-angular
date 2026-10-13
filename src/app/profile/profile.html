@@ -1,0 +1,77 @@
+@if(profile$ | async; as profile) {
+<header class="profilePageHeader">
+    <app-profile-header [profile]="profile"></app-profile-header>
+
+    <a routerLink="['/']">
+        <p>Edit</p> <svg [icon]="'settings'"></svg>
+    </a>
+</header>
+}
+
+<main class="pageBody">
+    <app-post-feed></app-post-feed>
+
+    <div class="myInfo">
+        <div class="subscibersTitle">
+            <p class="title">Subscribers</p>
+            <span>{{subscribers()?.length}}</span>
+        </div>
+
+
+        <ul>
+            @for(subscriber of subscribers(); track subscriber.id) {
+            <li>
+                <a [routerLink]="[`/profile/${subscriber.id}`]">
+                    <img [src]="subscriber.avatarUrl | imgUrl" alt="`${subscriber.userrname} avatar`">
+                </a>
+            </li>
+            }
+            <li>
+                <a class="subscribersSearch" [routerLink]="['/search']">+</a>
+            </li>
+        </ul>
+        
+        <div class="title">Skills</div>
+        
+        <div>
+
+            <ul class="skills" [class.expanded]="skillsExpanded()">
+                @for(tag of (profile$ | async)?.stack; track tag) {
+                <li class="skillTag">{{tag}}</li>
+                }
+                <li class="skillTag">Nadia</li>
+                <li class="skillTag">Nadia</li>
+                <li class="skillTag">Nadia</li>
+                <li class="skillTag">Nadia</li>
+                <li class="skillTag">Nadia</li>
+                <li class="skillTag">Nadia</li>
+                <li class="skillTag">Nadia</li>
+                <li class="skillTag">Nadia</li>
+                <li class="skillTag">Nadia</li>
+                <li class="skillTag">Nadia</li>
+                <li class="skillTag">Nadia</li>
+                <li class="skillTag">Nadia</li>
+                <li class="skillTag">Nadia</li>
+                <li class="skillTag">Nadia</li>
+                <li class="skillTag">Nadia</li>
+                <li class="skillTag">Nadia</li>
+                <li class="skillTag">Nadia</li>
+                <li class="skillTag">Nadia</li>
+                <li class="skillTag">Nadia</li>
+                <li class="skillTag">Nadia</li>
+                <li class="skillTag">Nadia</li>
+                <li class="skillTag">Nadia</li>
+                <li class="skillTag">Nadia</li>
+                <li class="skillTag">Nadia</li>
+                <li class="skillTag">Nadia</li>
+            </ul>
+            <button class="expandedButton" type="button" (click)="toggleExpanded()">
+                {{skillsExpanded() ? 'Show less' : '...' }}
+            </button>
+        </div>
+
+        <div class="title">About me</div>
+
+        <div class="description">{{ (profile$ | async)?.description }}</div>
+    </div>
+</main>

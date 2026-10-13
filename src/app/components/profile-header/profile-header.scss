@@ -1,0 +1,23 @@
+:host {
+    display: grid;
+    grid-template-columns: 112px 1fr;
+    align-items: center;
+    grid-gap: 24px;
+    
+    img {
+        width: 112px;
+        height: 112px;
+        border-radius: 50%;
+    }
+    div {
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+
+
+        p {
+            font-weight: 400;
+            font-size: 14px;
+        }
+    }
+}

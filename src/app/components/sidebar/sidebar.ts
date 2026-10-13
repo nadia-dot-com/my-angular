@@ -5,12 +5,12 @@ import { SvgIcon } from '../svg-icon/svg-icon';
 import { SubsriberCard } from '../subsriber-card/subsriber-card';
 import { ProfileService } from '@/app/services/profile';
 import { Profile } from '@/app/model/profile.types';
-import { AsyncPipe, JsonPipe } from '@angular/common';
-import { firstValueFrom } from 'rxjs';
+import { AsyncPipe } from '@angular/common';
+import { firstValueFrom, map } from 'rxjs';
 import { ImgUrlPipe } from '@/app/pipes/img-url-pipe';
 
 @Component({
-  imports: [RouterLink, RouterLinkActive, SvgIcon, SubsriberCard, AsyncPipe, ImgUrlPipe],
+  imports: [RouterLink, RouterLinkActive, SvgIcon, SubsriberCard, ImgUrlPipe],
   selector: 'app-sidebar',
   styleUrl: './sidebar.scss',
   templateUrl: './sidebar.html',
@@ -18,10 +18,15 @@ import { ImgUrlPipe } from '@/app/pipes/img-url-pipe';
 export class Sidebar {
   routes = ROUTE_LABELS;
   profileService = inject(ProfileService);
-  subscribers$ = this.profileService.getSubscribers();
+  total = signal<string | null>(null)
+  subscribers = signal<Profile[]>([])
   me = this.profileService.me;
 
   ngOnInit() {
     firstValueFrom(this.profileService.getMe());
+    this.profileService.getSubscribers()
+      .pipe(
+        map(res => this.subscribers.set(res.items.slice(0, 3)))
+      );
   }
 }

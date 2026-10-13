@@ -1,0 +1,148 @@
+@use '../../variables' as v;
+
+:host {
+    width: 100%;
+}
+
+.profilePageHeader {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding-bottom: 24px;
+
+    a {
+        display: flex;
+        align-items: center;
+        align-self: center;
+        width: 134px;
+        height: 44px;
+        background-color: v.$accent-light-color;
+        padding: 10px 20px;
+        color: v.$background;
+        font-size: 14px;
+        font-family: inherit;
+        border: none;
+        font-weight: 500;
+
+        p {
+            font-weight: 700;
+        }
+
+        svg {
+            position: relative;
+            top: 68px;
+            left: 55px;
+        }
+    }
+}
+
+
+.pageBody {
+    display: flex;
+    padding-top: 24px;
+
+    .posts {
+        flex: 1;
+    }
+
+    .myInfo {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        width: 340px;
+        padding: 24px 0px;
+
+        .subscibersTitle {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            span {
+                font-weight: 700;
+                font-size: 12px;
+                line-height: 16px;
+                text-align: center;
+                background-color: v.$positive-color;
+                color: v.$background;
+                padding: 1px 5px;
+            }
+        }
+
+        ul {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        img {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+        }
+    }
+
+    .title {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+    }
+
+    .skills {
+        display: flex;
+        flex-wrap: wrap;
+        max-height: 150px;
+        overflow: hidden;
+        gap: 10px;
+
+        &.expanded {
+            max-height: none;
+        }
+
+        .skillTag {
+            border: 1px solid v.$foreground;
+            border-radius: 2px;
+            padding: 4px 8px;
+            display: inline;
+            font-weight: 700;
+
+        }
+    }
+
+    .expandedButton {
+        align-self: center;
+        background: none;
+        border: none;
+        color: white;
+        font-weight: 700;
+        cursor: pointer;
+
+        &.active,
+        &.hover {
+            color: v.$accent-color
+        }
+    }
+
+    .description {
+        font-size: 12px;
+    }
+
+    .subscribersSearch {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1;
+        position: relative;
+        top: -2px;
+        width: 16px;
+        height: 16px;
+        background-color: white;
+        color: v.$background;
+        border-radius: 50%;
+        font-weight: 800;
+        margin: 8px;
+
+        &:hover {
+            background-color: v.$accent-color;
+        }
+    }
+}

@@ -17,7 +17,7 @@
 
     <div class="subscribersTitle">Subscribers</div>
 
-    @for(subscriber of subscribers$ | async; track subscriber.id) {
+    @for(subscriber of subscribers(); track subscriber.id) {
     <app-subsriber-card [subscriber]="subscriber"></app-subsriber-card>
     }
 
