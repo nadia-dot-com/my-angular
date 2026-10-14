@@ -2,7 +2,7 @@
 <header class="profilePageHeader">
     <app-profile-header [profile]="profile"></app-profile-header>
 
-    <a routerLink="['/']">
+    <a routerLink="/settings">
         <p>Edit</p> <svg [icon]="'settings'"></svg>
     </a>
 </header>
@@ -33,37 +33,11 @@
         
         <div class="title">Skills</div>
         
-        <div>
-
+        <div class="skillsContainer">
             <ul class="skills" [class.expanded]="skillsExpanded()">
                 @for(tag of (profile$ | async)?.stack; track tag) {
                 <li class="skillTag">{{tag}}</li>
                 }
-                <li class="skillTag">Nadia</li>
-                <li class="skillTag">Nadia</li>
-                <li class="skillTag">Nadia</li>
-                <li class="skillTag">Nadia</li>
-                <li class="skillTag">Nadia</li>
-                <li class="skillTag">Nadia</li>
-                <li class="skillTag">Nadia</li>
-                <li class="skillTag">Nadia</li>
-                <li class="skillTag">Nadia</li>
-                <li class="skillTag">Nadia</li>
-                <li class="skillTag">Nadia</li>
-                <li class="skillTag">Nadia</li>
-                <li class="skillTag">Nadia</li>
-                <li class="skillTag">Nadia</li>
-                <li class="skillTag">Nadia</li>
-                <li class="skillTag">Nadia</li>
-                <li class="skillTag">Nadia</li>
-                <li class="skillTag">Nadia</li>
-                <li class="skillTag">Nadia</li>
-                <li class="skillTag">Nadia</li>
-                <li class="skillTag">Nadia</li>
-                <li class="skillTag">Nadia</li>
-                <li class="skillTag">Nadia</li>
-                <li class="skillTag">Nadia</li>
-                <li class="skillTag">Nadia</li>
             </ul>
             <button class="expandedButton" type="button" (click)="toggleExpanded()">
                 {{skillsExpanded() ? 'Show less' : '...' }}

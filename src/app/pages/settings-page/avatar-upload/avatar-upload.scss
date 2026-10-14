@@ -1,0 +1,43 @@
+@use "../../../../variables" as v;
+
+:host {
+    display: grid;
+    grid-gap: 32px;
+    grid-template-columns: 123px 1fr;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #fff;
+    grid-gap: 42px;
+}
+
+.avatar {
+    height: 140px;
+    width: 140px;
+    border-radius: 50%;
+}
+
+.dropzone {
+    border-radius: 2px;
+    border: 1px dashed #FFF;
+    padding: 16px;
+}
+
+.avatarInput {
+    display: none;
+}
+
+.claude {
+    height: 18px;
+    width: 18px;
+    color: #FFF;
+    margin: 17px;
+}
+
+.dropzoneContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.description {
+    font-size: 14px;
+}

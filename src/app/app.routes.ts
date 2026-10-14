@@ -51,5 +51,11 @@ export const routes: Routes = [
         loadComponent: () => {
             return import("./search/search").then((m) => m.Search)
         }
+    },
+     {
+        path: "settings",
+        loadComponent: () => {
+            return import("./pages/settings-page/settings-page").then((m) => m.SettingsPage)
+        }
     }
 ];

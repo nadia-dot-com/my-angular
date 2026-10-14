@@ -1,0 +1,81 @@
+@use '../../../variables' as v;
+
+:host {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    grid-gap: 48px;
+
+    .form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .profileForm {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        padding: 32px;
+        max-width: 600px;
+        width: 100%;
+        max-height: 788px;
+        height: 100%;
+        border: 1px solid v.$foreground;
+        background-color: black;
+    }
+
+    .field {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    label {
+        font-size: 12px;
+        color: v.$foreground;
+        padding-bottom: 4px;
+    }
+
+    .profileInput {
+        padding: 12px 0px;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        font-size: 14px;
+        width: 100%;
+        background-color: black;
+        border-bottom: 1px, solid v.$foreground;
+        border-radius: 0%;
+    }
+
+    .initials {
+        display: flex;
+        gap: 20px;
+        width: 100%;
+    }
+
+    .buttons {
+        display: flex;
+        gap: 20px;
+        align-self: flex-end;
+
+        .saveButton {
+            background-color: #AE7AFF;
+            cursor: pointer;
+        }
+
+        .cancelButton {
+            background-color: transparent;
+            color: #fff;
+            border: 1px solid #fff;
+            cursor: pointer;
+        }
+    }
+
+    .formContainer {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 20px;
+    }
+}

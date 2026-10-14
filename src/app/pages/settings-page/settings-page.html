@@ -1,0 +1,45 @@
+<!-- <app-profile-header [profile]="profile"></app-profile-header> -->
+<div></div>
+
+<form class="profileForm" [formGroup]="form" (ngSubmit)="onSave()">
+    <div class="formContainer">
+        <div class="initials">
+            <div class="field">
+                <label for="firstName">FirstName</label>
+                <input id="firstName" class="profileInput" formControlName="firstName" type="text"
+                    placeholder="Provide Name">
+            </div>
+            <div class="field">
+                <label for="lastName">LastName</label>
+                <input id="lastName" class="profileInput" formControlName="lastName" type="text"
+                    placeholder="Provide LastName">
+            </div>
+        </div>
+
+        <div class="field">
+            <label for="userName">Telegram username</label>
+            <input id="userName" class="profileInput" formControlName="username" type="text"
+                placeholder="Provide Telegram username">
+        </div>
+        <div class="field">
+            <label for="description">About me</label>
+            <textarea id="description" class="profileInput" formControlName="description"
+                placeholder="Tell us about yourself"></textarea>
+        </div>
+
+        <div class="field">
+            <label for="userName">Avatar</label>
+            <app-avatar-upload></app-avatar-upload>
+        </div>
+
+        <div class="field">
+            <label for="stack">Skills / Stack</label>
+            <input id="stack" class="profileInput" formControlName="stack" type="text" placeholder="Add a skill">
+        </div>
+    </div>
+
+    <div class="buttons">
+        <button class="cancelButton">Cancel</button>
+        <button class="saveButton" type="submit">Save</button>
+    </div>
+</form>

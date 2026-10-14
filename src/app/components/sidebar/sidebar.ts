@@ -5,7 +5,6 @@ import { SvgIcon } from '../svg-icon/svg-icon';
 import { SubsriberCard } from '../subsriber-card/subsriber-card';
 import { ProfileService } from '@/app/services/profile';
 import { Profile } from '@/app/model/profile.types';
-import { AsyncPipe } from '@angular/common';
 import { firstValueFrom, map } from 'rxjs';
 import { ImgUrlPipe } from '@/app/pipes/img-url-pipe';
 
@@ -22,8 +21,8 @@ export class Sidebar {
   subscribers = signal<Profile[]>([])
   me = this.profileService.me;
 
-  ngOnInit() {
-    firstValueFrom(this.profileService.getMe());
+  async ngOnInit() {
+    await firstValueFrom(this.profileService.getMe());
     this.profileService.getSubscribers()
       .pipe(
         map(res => this.subscribers.set(res.items.slice(0, 3)))

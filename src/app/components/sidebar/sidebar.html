@@ -27,7 +27,7 @@
 
 <footer class="sidebarFooter">
     @if(me(); as me) {
-    <a class="myProfile" [routerLink]="['/login']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+    <a class="myProfile" [routerLink]="['/settings']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
         <img [src]="me.avatarUrl | imgUrl" alt="My Avatar">
         <p>{{ me.username }}</p>
         <svg class="svg" icon="settings" alt="Settings"></svg>
