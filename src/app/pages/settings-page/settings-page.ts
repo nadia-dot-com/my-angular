@@ -31,7 +31,7 @@ export class SettingsPage {
       this.form.patchValue({
         ...this.profileService.me(),
         //@ts-ignore
-        stack: this.mergeStack(this.profileService.me()?.stack)
+        stack: this.mergeStack(this.profileService.me()?.stack),
       })
     });
   }

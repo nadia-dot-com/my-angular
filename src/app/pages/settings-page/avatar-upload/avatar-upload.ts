@@ -1,6 +1,6 @@
 import { SvgIcon } from '@/app/components/svg-icon/svg-icon';
 import { DndDirective } from '@/app/directives/dnd';
-import { Component, signal } from '@angular/core';
+import { Component, effect, input, linkedSignal, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -10,7 +10,9 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './avatar-upload.html',
 })
 export class AvatarUpload {
-  preview = signal<string>('/assets/images/avatar.png');
+  currentAvatarUrl = input<string | null>(null);
+
+  preview = linkedSignal(() => this.currentAvatarUrl() ?? '/assets/images/avatar.png');
   avatar: File | null = null;
 
   fileBrowserHandler(event: Event) {

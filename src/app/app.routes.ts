@@ -56,6 +56,7 @@ export const routes: Routes = [
         path: "settings",
         loadComponent: () => {
             return import("./pages/settings-page/settings-page").then((m) => m.SettingsPage)
-        }
+        },
+        canActivate: [canAvtivaleLogin]
     }
 ];

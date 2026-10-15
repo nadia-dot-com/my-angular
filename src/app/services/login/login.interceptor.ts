@@ -1,9 +1,9 @@
 import { HttpHandlerFn, HttpInterceptorFn, HttpRequest } from "@angular/common/http"
 import { LoginService } from "./login"
 import { inject } from "@angular/core";
-import { catchError, switchMap, throwError } from "rxjs";
+import { BehaviorSubject, catchError, filter, finalize, switchMap, throwError } from "rxjs";
 
-let isRefreshing = false;
+let isRefreshing$ = new BehaviorSubject<boolean>(false);
 
 export const loginTokenInterceptorFn: HttpInterceptorFn = (req: HttpRequest<any>, next: HttpHandlerFn) => {
     const loginService = inject(LoginService);
@@ -11,7 +11,7 @@ export const loginTokenInterceptorFn: HttpInterceptorFn = (req: HttpRequest<any>
 
     if (!token) return next(req);
 
-    if (isRefreshing) {
+    if (isRefreshing$.value) {
         return refreshAndProceed(loginService, req, next);
     }
 
@@ -27,20 +27,28 @@ export const loginTokenInterceptorFn: HttpInterceptorFn = (req: HttpRequest<any>
 }
 
 const refreshAndProceed = (loginService: LoginService, req: HttpRequest<any>, next: HttpHandlerFn) => {
-    if (!isRefreshing) {
-        isRefreshing = true;
+    if (!isRefreshing$.value) {
+        isRefreshing$.next(true);
         return loginService.refreshLoginToken()
             .pipe(
                 switchMap((res) => {
                     if (!loginService.token) {
                         return throwError(() => new Error('No token after refresh'));
                     }
-                    isRefreshing = false;
                     return next(addToken(req, res.access_token))
-                })
+                }),
+                finalize(() => isRefreshing$.next(false))
             )
     }
-    return next(addToken(req, loginService.token!));
+
+    if (req.url.includes('refresh')) return next(addToken(req, loginService.token!));
+
+    return isRefreshing$.pipe(
+        filter(isRefreshing$ => !isRefreshing$),
+        switchMap(() => {
+            return next(addToken(req, loginService.token!));
+        })
+    )
 }
 
 

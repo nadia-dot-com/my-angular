@@ -29,7 +29,7 @@
 
         <div class="field" >
             <label for="userName">Avatar</label>
-            <app-avatar-upload></app-avatar-upload>
+            <app-avatar-upload [currentAvatarUrl]="profileService.me()?.avatarUrl ?? null"></app-avatar-upload>
         </div>
 
         <div class="field">
