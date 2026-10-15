@@ -13,12 +13,17 @@
     height: 140px;
     width: 140px;
     border-radius: 50%;
+    object-fit: cover;
 }
 
 .dropzone {
     border-radius: 2px;
     border: 1px dashed #FFF;
     padding: 16px;
+}
+
+.fileover {
+    border-color: v.$accent-color;
 }
 
 .avatarInput {

@@ -4,7 +4,7 @@ import { Component, input } from '@angular/core';
 import { SvgIcon } from '../svg-icon/svg-icon';
 
 @Component({
-  imports: [ImgUrlPipe],
+  imports: [],
   selector: 'app-profile-header',
   styleUrl: './profile-header.scss',
   templateUrl: './profile-header.html',

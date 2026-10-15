@@ -1,9 +1,9 @@
 <img class="avatar" [src]="preview()">
 
-<div class="dropzone" tabindex="0" (keyup.enter)="fileDrop.click()">
+<div class="dropzone" tabindex="0" Dnd (fileDropped)="onFileDroped($event)" (keyup.enter)="fileDrop.click()">
     <div class="dropzoneContent">
         <svg class="claude" icon="claude"></svg>
         <span class="description">Upload file</span>
     </div>
-    <input class="avatarInput" type="file" #fileDrop (change)="fileBrowserHandler($event)">
+    <input class="avatarInput" type="file" #fileDrop [(ngModel)]="avatar" (change)="fileBrowserHandler($event)">
 </div>

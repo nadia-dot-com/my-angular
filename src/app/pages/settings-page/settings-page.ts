@@ -1,6 +1,6 @@
 import { ProfileHeader } from '@/app/components/profile-header/profile-header';
 import { ProfileService } from '@/app/services/profile';
-import { Component, effect, inject } from '@angular/core';
+import { Component, effect, inject, ViewChild } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { firstValueFrom } from 'rxjs';
 import { AvatarUpload } from './avatar-upload/avatar-upload';
@@ -23,6 +23,8 @@ export class SettingsPage {
     stack: [''],
   });
 
+  @ViewChild(AvatarUpload) avatarUploader!: AvatarUpload;
+
   constructor() {
     effect(() => {
       //@ts-ignore
@@ -34,11 +36,21 @@ export class SettingsPage {
     });
   }
 
+  ngAfterViewInit() {
+    this.avatarUploader.avatar
+  }
+
   async onSave() {
     this.form.markAllAsTouched()
     this.form.updateValueAndValidity()
 
     if (this.form.invalid) return;
+
+    if(this.avatarUploader.avatar) {
+      await firstValueFrom(this.profileService.uploadAvatar(this.avatarUploader.avatar));
+    }
+
+    console.log(this.avatarUploader.avatar)
 
     //@ts-ignore
     await firstValueFrom(this.profileService.patchProfile({ ...this.form.value, stack: this.splitStack(this.form.value.stack) }));
