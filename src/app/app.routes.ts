@@ -22,13 +22,6 @@ export const routes: Routes = [
         }
     },
     {
-        path: "profiles",
-        loadComponent: () => {
-            return import("./profiles/profiles").then((m) => m.Profiles)
-        },
-        canActivate: [canAvtivaleLogin]
-    },
-    {
         path: "login",
         loadComponent: () => {
             return import("./login/login").then((m) => m.LoginComponent)

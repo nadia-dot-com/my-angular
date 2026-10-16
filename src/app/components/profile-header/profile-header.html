@@ -1,5 +1,5 @@
 @if(profile(); as profile) {
-<img [src]="profile.avatarUrl ?? null" alt="Avatar" >
+<img [src]="profile.avatarUrl | imgUrl" alt="Avatar" >
 <div>
     <h4>{{ profile.firstName }} {{ profile.lastName }}</h4>
     <p>{{ profile.username }}</p>

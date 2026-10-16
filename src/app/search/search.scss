@@ -1,0 +1,12 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    grid-gap: 20px;
+    width: 100%;
+}
+
+ul {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}

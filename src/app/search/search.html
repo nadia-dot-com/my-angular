@@ -1,1 +1,7 @@
-<p>search works!</p>
+<app-profile-filters></app-profile-filters>
+
+<ul >
+    @for(profile of profiles(); track profile.id) {
+        <app-profile-card [profile]="profile"/>
+    }
+</ul>

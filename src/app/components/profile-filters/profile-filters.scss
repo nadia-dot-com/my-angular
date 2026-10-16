@@ -1,0 +1,36 @@
+  @use "../../../variables" as v;
+  
+  .profileForm{
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    background-color: black;
+    padding: 16px 20px;
+    border: 1px solid v.$foreground;
+    width: 100%;
+  }
+  
+  .field {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      max-width: 230px;
+  }
+
+  label {
+      font-size: 12px;
+      color: v.$foreground;
+      padding-bottom: 4px;
+  }
+
+  .profileInput {
+      padding: 12px 0px;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      font-size: 14px;
+      width: 100%;
+      background-color: black;
+      border-bottom: 1px, solid v.$foreground;
+      border-radius: 0%;
+  }

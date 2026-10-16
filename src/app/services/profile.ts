@@ -11,9 +11,10 @@ export class ProfileService {
     http = inject(HttpClient);
     me = signal<Profile | null>(null);
     private readonly baseUrl = 'http://localhost:8000/yt-course';
+    filteredProfiles = signal<Profile[] | null>(null);
 
     private withAbsoluteAvatar(profile: Profile): Profile {
-        if(!profile.avatarUrl || profile.avatarUrl.startsWith('http')) return profile;
+        if (!profile.avatarUrl || profile.avatarUrl.startsWith('http')) return profile;
         return { ...profile, avatarUrl: `${this.baseUrl}/${profile.avatarUrl}` };
     }
 
@@ -25,19 +26,19 @@ export class ProfileService {
     getMe() {
         return this.http.get<Profile>('http://localhost:8000/yt-course/account/me/')
             .pipe(
-                 map(res => this.withAbsoluteAvatar(res)),
+                map(res => this.withAbsoluteAvatar(res)),
                 tap(res => this.me.set(res))
             )
     }
 
     getProfile(id: string) {
         return this.http.get<Profile>(`http://localhost:8000/yt-course/account/${id}`)
-        .pipe( map(res => this.withAbsoluteAvatar(res)))
+            .pipe(map(res => this.withAbsoluteAvatar(res)))
     }
 
     getSubscribers() {
         return this.http.get<Pageble<Profile>>('http://localhost:8000/yt-course/account/subscribers/')
-        .pipe( map(res => ({ ...res, items: res.items.map(p => this.withAbsoluteAvatar(p)) })))
+            .pipe(map(res => ({ ...res, items: res.items.map(p => this.withAbsoluteAvatar(p)) })))
     }
 
     patchProfile(profile: Partial<Profile>) {
@@ -60,7 +61,7 @@ export class ProfileService {
 
         return this.http.post<Profile>(`http://localhost:8000/yt-course/account/upload_image`, fd)
             .pipe(
-                 map(res => this.withAbsoluteAvatar(res)),
+                map(res => this.withAbsoluteAvatar(res)),
                 tap((res: Profile) => {
                     const current = this.me();
                     if (!current) return;
@@ -71,6 +72,14 @@ export class ProfileService {
                     console.error("Add Avatar Error")
                     return throwError(err);
                 })
+            )
+    }
+
+    filterProfiles(params: Record<string, any>) {
+        return this.http.get<Pageble<Profile>>(`http://localhost:8000/yt-course/account/accounts`, { params })
+            .pipe(
+                map(res => ({ ...res, items: res.items.map(p => this.withAbsoluteAvatar(p)) })),
+                tap((res: Pageble<Profile>) => this.filteredProfiles.set(res.items))
             )
     }
 }

@@ -1,0 +1,22 @@
+<form class="profileForm" [formGroup]="searchForms">
+    <div class="field">
+        <label for="firstName">First Name</label>
+        <input id="firstName" class="profileInput" formControlName="firstName" type="text"
+            placeholder="Provide first name">
+    </div>
+    <div class="field">
+        <label for="lastName">Last Name</label>
+        <input id="lastName" class="profileInput" formControlName="lastName" type="text"
+            placeholder="Provide last name">
+    </div>
+
+    <div class="field">
+        <label for="city">City</label>
+        <input id="city" class="profileInput" formControlName="city" type="text" placeholder="Provide city">
+    </div>
+
+    <div class="field">
+        <label for="stack">Skills / Stack</label>
+        <input id="stack" class="profileInput" formControlName="stack" type="text" placeholder="Provide a skill">
+    </div>
+</form>
